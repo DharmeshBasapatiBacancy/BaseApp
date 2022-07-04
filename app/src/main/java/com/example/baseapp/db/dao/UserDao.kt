@@ -7,7 +7,6 @@ import com.example.baseapp.db.entities.User
 @Dao
 interface UserDao {
 
-    @Query("SELECT * FROM user")
-    suspend fun getUsers(): List<User>
+
 
 }
