@@ -9,6 +9,7 @@ class MainRepository @Inject constructor(
     private val userDao: UserDao,
 ) {
 
+    suspend fun getThatJoke() = apiService.getThatJoke()
 
 
 }
