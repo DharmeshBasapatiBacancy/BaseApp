@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.baseapp.databinding.ActivityMainBinding
 import com.example.baseapp.utils.ApiResponse
+import com.example.baseapp.utils.NetworkUtils.isNetworkConnected
 import com.example.baseapp.viewmodels.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -24,7 +25,11 @@ class MainActivity : AppCompatActivity() {
         getThatJoke()
         binding.apply {
             getThatJokeButton.setOnClickListener {
-                getThatJoke()
+                if (isNetworkConnected(this@MainActivity)) {
+                    getThatJoke()
+                } else {
+                    binding.thatJokeTextView.text = "No internet connection !!!"
+                }
             }
         }
     }
