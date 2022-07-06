@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/actionHome"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/actionStores"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="Stores"/>
+
+    <item
+        android:id="@+id/actionDeals"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="Deals"/>
+
+    <item
+        android:id="@+id/actionRewards"
+        android:enabled="true"
+        android:icon="@drawable/ic_rewards"
+        android:title="Rewards"/>
+
+    <item
+        android:id="@+id/actionMore"
+        android:enabled="true"
+        android:icon="@drawable/ic_more_vertical"
+        android:title="More"/>
+
+</menu>
