@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/dark_black"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".views.fragments.home.HomeFragment">
+    tools:context=".views.fragments.rewards.RewardsFragment">
 
     <TextView
         android:id="@+id/thatJoke_textView"
@@ -32,17 +32,5 @@
         android:textAllCaps="false"
         android:textSize="@dimen/_15ssp"
         app:layout_constraintTop_toBottomOf="@id/thatJoke_textView" />
-
-    <Button
-        android:id="@+id/goToHomeDetail_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/quando"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:text="Go to Detail Screen"
-        android:textAllCaps="false"
-        android:textSize="@dimen/_15ssp"
-        app:layout_constraintTop_toBottomOf="@id/getThatJoke_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,8 +15,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BaseApp"
+        android:theme="@style/Theme.AppSplashScreen"
         tools:targetApi="31">
+        <activity
+            android:name=".views.activities.HomeScreenWithNavGraphActivity"
+            android:exported="false" />
         <activity
             android:name=".views.activities.ProfileScreen"
             android:exported="false" />
@@ -24,7 +27,7 @@
             android:name=".views.activities.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".views.activities.HomeScreen"
+            android:name=".views.activities.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.example.baseapp.views.fragments
+package com.example.baseapp.views.fragments.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.baseapp.databinding.FragmentHomeBinding
 import com.example.baseapp.utils.ApiResponse
 import com.example.baseapp.utils.NetworkUtils
@@ -19,10 +20,6 @@ class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
-    init {
-
-    }
-
     private val userViewModel: UserViewModel by viewModels()
 
     private lateinit var contentView: View
@@ -33,7 +30,7 @@ class HomeFragment : Fragment() {
     ): View {
 
         if (!::contentView.isInitialized) {
-            binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+            binding = FragmentHomeBinding.inflate(inflater, container, false)
             contentView = binding.root
             getThatJoke()
             binding.apply {
@@ -43,6 +40,9 @@ class HomeFragment : Fragment() {
                     } else {
                         binding.thatJokeTextView.text = "No internet connection !!!"
                     }
+                }
+                goToHomeDetailButton.setOnClickListener {
+                    findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToHomeDetailFragment())
                 }
             }
         }

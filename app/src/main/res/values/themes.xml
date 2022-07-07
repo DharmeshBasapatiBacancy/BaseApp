@@ -15,7 +15,6 @@
         <item name="android:colorBackground">@color/white</item>
     </style>
 
-
     <style name="BasicEditText" parent="Widget.AppCompat.EditText">
         <item name="android:background">@drawable/edittext_selector</item>
         <item name="android:padding">@dimen/_12sdp</item>
@@ -71,6 +70,19 @@
         <item name="chipCornerRadius">@dimen/_5sdp</item>
         <item name="chipStartPadding">@dimen/_10sdp</item>
         <item name="chipEndPadding">@dimen/_10sdp</item>
+    </style>
+
+    <style name="Theme.AppSplashScreen" parent="Theme.SplashScreen">
+
+        // Set the splash screen background.
+        <item name="windowSplashScreenBackground">@color/primaryColor</item>
+
+        // Set any animated or static app icon
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_thankucash</item>
+
+        // Set the theme of the Activity that directly follows your splash screen.
+        <item name="postSplashScreenTheme">@style/Theme.BaseApp</item>
+
     </style>
 
 </resources>

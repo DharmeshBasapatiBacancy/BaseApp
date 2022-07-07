@@ -1,15 +1,13 @@
-package com.example.baseapp.views.fragments
+package com.example.baseapp.views.fragments.more
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.example.baseapp.R
-import com.example.baseapp.databinding.FragmentHomeBinding
+import com.example.baseapp.databinding.FragmentMoreBinding
 import com.example.baseapp.utils.ApiResponse
 import com.example.baseapp.utils.NetworkUtils
 import com.example.baseapp.viewmodels.UserViewModel
@@ -17,13 +15,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class DealsFragment : Fragment() {
+class MoreFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeBinding
-
-    init {
-
-    }
+    private lateinit var binding: FragmentMoreBinding
 
     private val userViewModel: UserViewModel by viewModels()
 
@@ -35,7 +29,7 @@ class DealsFragment : Fragment() {
     ): View {
 
         if (!::contentView.isInitialized) {
-            binding = FragmentHomeBinding.inflate(layoutInflater, container, false)
+            binding = FragmentMoreBinding.inflate(inflater, container, false)
             contentView = binding.root
             getThatJoke()
             binding.apply {
