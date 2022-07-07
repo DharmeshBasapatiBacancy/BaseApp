@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.baseapp.R
 import com.example.baseapp.databinding.ActivityHomeScreenWithNavGraphBinding
 import com.example.baseapp.utils.setupWithNavController
@@ -28,27 +29,27 @@ class HomeScreenWithNavGraphActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(binding.navHostFragment.id) as NavHostFragment
         navController = navHostFragment.findNavController()
-
-        val navGraphIds = listOf(
-            R.navigation.home_nav_graph,
-            R.navigation.store_nav_graph,
-            R.navigation.deals_nav_graph,
-            R.navigation.rewards_nav_graph,
-            R.navigation.more_nav_graph
-        )
-
-        val controller = binding.bottomNavigationView.setupWithNavController(
-            navGraphIds = navGraphIds,
-            fragmentManager = supportFragmentManager,
-            containerId = binding.navHostFragment.id,
-            intent = intent
-        )
-
-        currentNavController = controller
+        binding.bottomNavigationView.setupWithNavController(navController)
+//        val navGraphIds = listOf(
+//            R.navigation.home_nav_graph,
+//            R.navigation.store_nav_graph,
+//            R.navigation.deals_nav_graph,
+//            R.navigation.rewards_nav_graph,
+//            R.navigation.more_nav_graph
+//        )
+//
+//        val controller = binding.bottomNavigationView.setupWithNavController(
+//            navGraphIds = navGraphIds,
+//            fragmentManager = supportFragmentManager,
+//            containerId = binding.navHostFragment.id,
+//            intent = intent
+//        )
+//
+//        currentNavController = controller
 
     }
 
     override fun onSupportNavigateUp(): Boolean {
-       return currentNavController?.value?.navigateUp() ?: false
+       return navController.navigateUp()
     }
 }

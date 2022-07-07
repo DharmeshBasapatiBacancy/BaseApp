@@ -52,7 +52,7 @@ dependencies {
     def room_version = "2.4.2"
     def retrofit_version = "2.9.0"
     def okhttp_version = "4.9.1"
-    def navigation_version = "2.4.2"
+    def navigation_version = "2.5.0"
     def glide_version = "4.13.0"
     def lifecycle_viewmodel_ktx_version="2.4.1"
     def sdp_version = "1.0.6"

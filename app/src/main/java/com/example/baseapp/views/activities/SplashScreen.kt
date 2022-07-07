@@ -21,5 +21,6 @@ class SplashScreen : AppCompatActivity() {
 
     private fun proceedToApp() {
         startActivity(Intent(this, HomeScreenWithNavGraphActivity::class.java))
+        finish()
     }
 }
