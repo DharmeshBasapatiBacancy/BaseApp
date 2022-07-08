@@ -1,22 +1,16 @@
-package com.example.baseapp.views.fragments.home
+package com.example.baseapp.views.fragments.store
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.baseapp.R
-import com.example.baseapp.databinding.FragmentHomeBinding
-import com.example.baseapp.databinding.FragmentHomeDetailBinding
-import com.example.baseapp.utils.NetworkUtils
-import dagger.hilt.android.AndroidEntryPoint
+import com.example.baseapp.databinding.FragmentStoreDetailBinding
 
-@AndroidEntryPoint
-class HomeDetailFragment : Fragment() {
+class StoreDetailFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeDetailBinding
+    private lateinit var binding: FragmentStoreDetailBinding
     private lateinit var contentView: View
 
     override fun onCreateView(
@@ -25,7 +19,7 @@ class HomeDetailFragment : Fragment() {
     ): View {
 
         if (!::contentView.isInitialized) {
-            binding = FragmentHomeDetailBinding.inflate(inflater, container, false)
+            binding = FragmentStoreDetailBinding.inflate(inflater, container, false)
             contentView = binding.root
             binding.apply {
                 labelTextView.setOnClickListener {

@@ -33,4 +33,16 @@
         android:textSize="@dimen/_15ssp"
         app:layout_constraintTop_toBottomOf="@id/thatJoke_textView" />
 
+    <Button
+        android:id="@+id/goToStoreDetail_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/quando"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="Go to Store Detail"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_15ssp"
+        app:layout_constraintTop_toBottomOf="@id/getThatJoke_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

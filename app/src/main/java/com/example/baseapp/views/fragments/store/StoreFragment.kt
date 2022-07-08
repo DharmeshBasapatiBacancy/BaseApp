@@ -7,10 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import com.example.baseapp.databinding.FragmentStoreBinding
 import com.example.baseapp.utils.ApiResponse
 import com.example.baseapp.utils.NetworkUtils
 import com.example.baseapp.viewmodels.UserViewModel
+import com.example.baseapp.views.fragments.home.HomeFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -39,6 +41,10 @@ class StoreFragment : Fragment() {
                     } else {
                         binding.thatJokeTextView.text = "No internet connection !!!"
                     }
+                }
+
+                goToStoreDetailButton.setOnClickListener {
+                    findNavController().navigate(StoreFragmentDirections.actionStoreFragmentToStoreDetailFragment())
                 }
             }
         }
