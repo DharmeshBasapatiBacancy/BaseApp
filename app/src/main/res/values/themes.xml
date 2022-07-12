@@ -78,7 +78,9 @@
         <item name="windowSplashScreenBackground">@color/primaryColor</item>
 
         // Set any animated or static app icon
-        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_thankucash</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_tuc_vector</item>
+
+        <item name="windowSplashScreenIconBackgroundColor">@color/white</item>
 
         // Set the theme of the Activity that directly follows your splash screen.
         <item name="postSplashScreenTheme">@style/Theme.BaseApp</item>

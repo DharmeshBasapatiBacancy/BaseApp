@@ -3,34 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_black"
+    android:background="#F2F3F4"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".views.fragments.deals.DealsFragment">
 
-    <TextView
-        android:id="@+id/thatJoke_textView"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:gravity="center"
-        android:fontFamily="@font/quando"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_18ssp"
+        app:cardBackgroundColor="@color/white"
+        app:cardUseCompatPadding="true"
+        app:cardElevation="0dp"
+        android:layout_marginHorizontal="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="19dp"
-        tools:text="What do you call an old snowman? Water." />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/getThatJoke_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/quando"
-        android:layout_marginHorizontal="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:text="Get That Joke"
-        android:textAllCaps="false"
-        android:textSize="@dimen/_15ssp"
-        app:layout_constraintTop_toBottomOf="@id/thatJoke_textView" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:src="@drawable/splash_bg"
+            android:layout_height="@dimen/_60sdp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="ESPRESSO CAFE DEAL"
+                    android:padding="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="Expires: Next Week"
+                    android:padding="@dimen/_10sdp"
+                    android:layout_height="wrap_content"/>
+
+                <include layout="@layout/stripped_view"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

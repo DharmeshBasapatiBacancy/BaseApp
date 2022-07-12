@@ -111,6 +111,9 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:$datastore_version"
 
     implementation 'androidx.core:core-splashscreen:1.0.0-rc01'
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 }
 
 kapt {

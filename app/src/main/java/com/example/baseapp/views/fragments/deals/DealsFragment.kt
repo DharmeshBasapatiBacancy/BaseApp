@@ -31,42 +31,10 @@ class DealsFragment : Fragment() {
         if (!::contentView.isInitialized) {
             binding = FragmentDealsBinding.inflate(inflater, container, false)
             contentView = binding.root
-            getThatJoke()
-            binding.apply {
-                getThatJokeButton.setOnClickListener {
-                    if (NetworkUtils.isNetworkConnected(requireContext())) {
-                        getThatJoke()
-                    } else {
-                        binding.thatJokeTextView.text = "No internet connection !!!"
-                    }
-                }
-            }
+
         }
 
         return contentView
-    }
-
-    private fun getThatJoke() {
-        lifecycleScope.launch {
-            userViewModel.getThatJoke().observe(requireActivity()) {
-                when (it) {
-                    is ApiResponse.Success -> {
-                        if (it.data?.attachments?.isNotEmpty()!!) {
-                            binding.thatJokeTextView.text = it.data.attachments[0].text
-                        }
-                    }
-                    is ApiResponse.Error -> {
-                        binding.thatJokeTextView.text = "Try again !!!"
-                    }
-                    is ApiResponse.Loading -> {
-                        binding.thatJokeTextView.text = "Loading..."
-                    }
-                    else -> {
-                        binding.thatJokeTextView.text = "Try again !!!"
-                    }
-                }
-            }
-        }
     }
 
     companion object {
