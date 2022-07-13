@@ -16,12 +16,10 @@ import com.example.baseapp.utils.PermissionUtils
 import com.example.baseapp.utils.PermissionUtils.checkForPermission
 import com.example.baseapp.utils.PermissionUtils.launchMultiplePermission
 import com.example.baseapp.utils.PermissionUtils.registerPermission
-import com.example.baseapp.utils.ViewUtils.hide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.model.LatLng
 
 class LocationHandlerActivity : AppCompatActivity() {
 
@@ -29,10 +27,11 @@ class LocationHandlerActivity : AppCompatActivity() {
         private const val TAG = "LocationHandlerActivity"
     }
 
-    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
-    private lateinit var locationCallback: LocationCallback
-
     private lateinit var binding: ActivityLocationHandlerBinding
+
+    private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
+
+    private lateinit var locationCallback: LocationCallback
 
     private val locationPermission = registerPermission {
         onLocationPermissionResult(it)
@@ -41,7 +40,7 @@ class LocationHandlerActivity : AppCompatActivity() {
     private val goToSettingsRequest = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) { _ ->
-        stepOneCheckPermissionGrantedOrNot()
+        checkPermissionGrantedOrNot()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,9 +51,9 @@ class LocationHandlerActivity : AppCompatActivity() {
         fusedLocationProviderClient =
             LocationServices.getFusedLocationProviderClient(this)
 
-        stepOneCheckPermissionGrantedOrNot()
-
         setupLocationCallback()
+
+        checkPermissionGrantedOrNot()
     }
 
     private fun setupLocationCallback() {
@@ -62,17 +61,14 @@ class LocationHandlerActivity : AppCompatActivity() {
             override fun onLocationResult(locationresult: LocationResult) {
                 Log.d(TAG, "onLocationResult: ${locationresult.locations}")
                 fetchAddressFromLatLong(
-                    LatLng(
-                        locationresult.lastLocation?.latitude!!,
-                        locationresult.lastLocation?.longitude!!
-                    )
+                    locationresult.lastLocation?.latitude!!,
+                    locationresult.lastLocation?.longitude!!
                 )
-
             }
         }
     }
 
-    private fun stepOneCheckPermissionGrantedOrNot() {
+    private fun checkPermissionGrantedOrNot() {
         checkForPermission(this, PermissionUtils.locationPermissions).let { missingPermissionList ->
             if (missingPermissionList.size > 0) {
                 binding.messageTextView.text = "Location Permission Required"
@@ -86,17 +82,12 @@ class LocationHandlerActivity : AppCompatActivity() {
         }
     }
 
-    private fun openDeviceLocationDialog(){
+    private fun openDeviceLocationDialog() {
         requestDeviceLocationSettings({ onSuccess(it) }, { onFailure(it) })
     }
 
     private fun requestPermissions(missingPermission: ArrayList<String>) {
         locationPermission.launchMultiplePermission(missingPermission)
-    }
-
-    override fun onDestroy() {
-        fusedLocationProviderClient.removeLocationUpdates(locationCallback)
-        super.onDestroy()
     }
 
     private fun onLocationPermissionResult(permissionState: PermissionUtils.PermissionState) {
@@ -120,14 +111,23 @@ class LocationHandlerActivity : AppCompatActivity() {
         }
     }
 
-    private fun fetchAddressFromLatLong(location: LatLng) {
+    private fun fetchAddressFromLatLong(latitude: Double, longitude: Double) {
         LocationUtils.getAddressFromLatLong(this,
-            location.latitude.toString(),
-            location.longitude.toString(),
+            latitude.toString(),
+            longitude.toString(),
             object : LoadDataCallback<UserLocation> {
                 override fun onDataLoaded(response: UserLocation) {
                     Log.d(TAG, "onDataLoaded: $response")
                     binding.messageTextView.text = "Your Location - ${response.locationAddress}"
+                    binding.actionButton.setOnClickListener {
+                        startActivity(
+                            Intent(
+                                this@LocationHandlerActivity,
+                                HomeActivity::class.java
+                            )
+                        )
+                        finish()
+                    }
                 }
 
                 override fun onDataNotAvailable(errorCode: Int, reasonMsg: String) {
@@ -167,8 +167,13 @@ class LocationHandlerActivity : AppCompatActivity() {
 
     private fun onSuccess(message: String) {
         binding.messageTextView.text = message
-        binding.actionButton.hide()
+        binding.actionButton.text = "Go to Dashboard"
         startLocationUpdates()
+    }
+
+    override fun onDestroy() {
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback)
+        super.onDestroy()
     }
 
 }

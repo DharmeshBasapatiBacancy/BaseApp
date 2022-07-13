@@ -1,6 +1,5 @@
 package com.example.baseapp.models
 
-import com.google.android.gms.maps.model.LatLng
 import java.io.Serializable
 
 data class UserLocation(
@@ -8,5 +7,6 @@ data class UserLocation(
     var city: String = "",
     var area: String = "",
     var buildingName: String = "",
-    var latLng: LatLng? = LatLng(0.0,0.0)
+    var latitude: Double = 0.0,
+    var longitude: Double = 0.0
 ): Serializable

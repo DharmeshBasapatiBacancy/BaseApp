@@ -8,11 +8,9 @@ import android.location.Geocoder
 import android.location.LocationManager
 import androidx.fragment.app.FragmentActivity
 import com.example.baseapp.models.UserLocation
-import com.example.baseapp.utils.ViewUtils.hide
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.common.util.CollectionUtils
 import com.google.android.gms.location.*
-import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.tasks.Task
 import java.util.*
 
@@ -67,7 +65,8 @@ object LocationUtils {
                     city = cityName
                     area = areaName
                     buildingName = building
-                    latLng = LatLng(fetchedAddress.latitude, fetchedAddress.longitude)
+                    latitude = fetchedAddress.latitude
+                    longitude = fetchedAddress.longitude
                 }
                 callback.onDataLoaded(UserLocation)
             }
@@ -79,8 +78,8 @@ object LocationUtils {
 
     fun getAddressFromLatLong(
         context: Context,
-        latitude: String,
-        longitude: String,
+        lat: String,
+        longi: String,
         callback: LoadDataCallback<UserLocation>
     ) {
         var address = ""
@@ -93,7 +92,7 @@ object LocationUtils {
             val geocoder = Geocoder(context, Locale.ENGLISH)
 
             addresses =
-                geocoder.getFromLocation(latitude.toDouble(), longitude.toDouble(), 1)
+                geocoder.getFromLocation(lat.toDouble(), longi.toDouble(), 1)
             if (!CollectionUtils.isEmpty(addresses)) {
                 val fetchedAddress = addresses[0]
                 if (fetchedAddress.maxAddressLineIndex > -1) {
@@ -114,7 +113,8 @@ object LocationUtils {
                     city = cityName
                     area = areaName
                     buildingName = building
-                    latLng = LatLng(fetchedAddress.latitude, fetchedAddress.longitude)
+                    latitude = fetchedAddress.latitude
+                    longitude = fetchedAddress.longitude
                 }
                 callback.onDataLoaded(UserLocation)
             }
