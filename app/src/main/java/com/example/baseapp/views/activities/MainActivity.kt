@@ -1,14 +1,18 @@
 package com.example.baseapp.views.activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import com.example.baseapp.databinding.ActivityMainBinding
+import com.example.baseapp.prefdatastore.DataStoreManager
 import com.example.baseapp.utils.ApiResponse
 import com.example.baseapp.utils.NetworkUtils.isNetworkConnected
 import com.example.baseapp.viewmodels.UserViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -32,6 +36,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
     }
 
     private fun getThatJoke() {
