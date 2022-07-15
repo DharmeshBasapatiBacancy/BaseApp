@@ -20,7 +20,7 @@ class SplashScreen : AppCompatActivity() {
     }
 
     private fun proceedToApp() {
-        startActivity(Intent(this, HomeActivity::class.java))
+        startActivity(Intent(this, LocationHandlerActivity::class.java))
         finish()
     }
 }

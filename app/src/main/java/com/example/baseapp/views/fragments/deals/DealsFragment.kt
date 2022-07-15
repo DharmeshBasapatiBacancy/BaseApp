@@ -19,8 +19,6 @@ class DealsFragment : Fragment() {
 
     private lateinit var binding: FragmentDealsBinding
 
-    private val userViewModel: UserViewModel by viewModels()
-
     private lateinit var contentView: View
 
     override fun onCreateView(

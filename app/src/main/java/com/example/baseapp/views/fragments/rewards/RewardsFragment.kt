@@ -35,8 +35,6 @@ class RewardsFragment : Fragment() {
             contentView = binding.root
             setPieChartData()
             binding.apply {
-
-
                 scratchView.setStrokeWidth(15)
                 scratchView.setRevealListener(object : ScratchView.IRevealListener {
                     override fun onRevealed(scratchView: ScratchView?) {
